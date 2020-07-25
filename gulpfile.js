@@ -41,8 +41,8 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
   return gulp.src('source/js/main.js')
-  .pipe(concat('main.min.js'))
-  .pipe(uglify())
+  .pipe(concat('main.js'))
+  // .pipe(uglify())
   .pipe(gulp.dest('build/js'))
   .pipe(browserSync.reload({stream: true}));
 });

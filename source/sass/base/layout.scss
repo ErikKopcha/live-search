@@ -100,3 +100,49 @@ video {
   margin: 0;
   padding: 0;
 }
+
+.search__wrapper {
+  @include full-centered;
+
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 400px;
+  height: 100vh;
+
+  .search__input,
+  label {
+    width: 100%;
+    min-height: 30px;
+  }
+
+  .search__input {
+    padding: 0 5px;
+  }
+
+  #search__list {
+    margin-top: 20px;
+    min-height: 248px;
+
+    li {
+      @include item-centered;
+
+      position: relative;
+      padding: 0 0 0 15px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        display: block;
+        margin-right: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: blue;
+        border-radius: 100%;
+      }
+    }
+  }
+}
