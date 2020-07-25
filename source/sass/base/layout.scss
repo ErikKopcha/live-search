@@ -127,6 +127,7 @@ video {
     li {
       @include item-centered;
 
+      transition: $transition;
       position: relative;
       padding: 0 0 0 15px;
 

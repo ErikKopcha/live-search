@@ -52,12 +52,20 @@ class renderUsers {
       }
     ];
 
+    // для сортировки по алфавиту
+    let sortUsers = [];
+
     users.forEach(el => {
+      sortUsers.push(el.name);
+    });
+
+    sortUsers.sort();
+    sortUsers.forEach(name => {
       let li = document.createElement('li'),
-        p = document.createElement('p');
+      p = document.createElement('p');
 
       p.innerHTML = `
-        ${el.name}
+        ${name}
       `;
 
       li.classList.add('search__user');
@@ -91,16 +99,32 @@ class Search {
           // получаем только текст, без тегов.
           // search - ищет подстроку в строке и возвращает номер подстроки / -1 (если нет)
           if (el.innerText.toLowerCase().search(value) == -1) {
-            el.style.display = 'none';
+            this.hideElement(el);
           } else {
-            el.style.display = 'block';
+            this.showElement(el);
           }
         });
       } else {
         this.items.forEach(el => {
-          el.style.display = 'block';
+          this.showElement(el);
         });
       }
     });
+  }
+
+  showElement(el) {
+    el.style.display = 'block';
+
+    setTimeout(() => {
+      el.style.transform = 'translateX(0)';
+    }, 200);
+  }
+
+  hideElement(el) {
+    el.style.transform = 'translateX(-1000px)';
+
+    setTimeout(() => {
+      el.style.display = 'none';
+    }, 200);
   }
 }
